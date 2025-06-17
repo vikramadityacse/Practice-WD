@@ -37,7 +37,7 @@ export const BlogCard = ({id,authorName, title, content, publishedDate}:BlogCard
     </div>
 }
 
-function DOT(){
+export function DOT(){
     return <div className="h-1 w-1 rounded-full dark:bg-gray-600 ">
 
     </div>

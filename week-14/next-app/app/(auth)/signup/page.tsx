@@ -1,3 +1,4 @@
+
 import { SignUPComponent } from "@/app/components/SignUpComponent";
 
 export default function() {
