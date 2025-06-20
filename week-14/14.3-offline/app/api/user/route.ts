@@ -1,16 +1,9 @@
+import { PrismaClient } from "@prisma/client/extension";
 import { NextRequest, NextResponse } from "next/server";
 
-//app.get("api/user", function(){
-//    res.json({
-//      email : " ",
-//      name : " "
-//      })      
-//})
-
+const client = new PrismaClient();
 
 export function GET(req : NextRequest){
-    // do validation check
-    // fetch data from db
     return NextResponse.json({
         email: "vikramaditya@gmail.com",
         name: "Vikramaaditya"
@@ -18,15 +11,31 @@ export function GET(req : NextRequest){
 }
 
 export async function POST(req : NextRequest){
-    //body :- 
     const body = await req.json();
-    //headers :-
-    console.log(req.headers.get("authorization"))
-    //queryParams :-
-    console.log(req.nextUrl.searchParams.get("name"))
-    console.log(body)
-    // hit db with username and password 
-    return NextResponse.json({
-        message : "You are Signed In"
-    })
+
+    try{
+        const response = await client.user.create({
+            data:{
+                    name : body.name,
+                    email : body.email,
+                    password : body.password
+                }
+        })
+
+        return NextResponse.json({
+            message : "You are Signed In"
+        }, {
+            status: 200
+        })
+
+    }catch(e){
+        console.log(e);
+        return NextResponse.json({
+            message : "Bad Credientials"
+        }, {
+            status : 403
+        })
+    }
+    
+
 }

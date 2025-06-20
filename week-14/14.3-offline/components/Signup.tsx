@@ -4,8 +4,10 @@ import axios from "axios";
 import { ChangeEventHandler, useState } from "react";
 
 export function Signup() {
+    const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
 
     return <div className="h-screen flex justify-center flex-col">
         <div className="flex justify-center">
@@ -19,15 +21,19 @@ export function Signup() {
                     </div>
                     <div className="pt-2">
                         <LabelledInput onChange={(e) => {
+                            setName(e.target.value);
+                        }} label="Name" placeholder="John" />
+                        <LabelledInput onChange={(e) => {
                             setEmail(e.target.value);
-                        }} label="Email" placeholder="harkirat@gmail.com" />
+                        }} label="Email" placeholder="john@gmail.com" />
                         <LabelledInput onChange={(e) => {
                             setPassword(e.target.value)
-                        }} label="Password" type={"password"} placeholder="123456" />
+                        }} label="Password" type={"password"} placeholder="********" />
                         <button onClick={() => {
                             axios.post("http://localhost:3000/api/user", {
                                 email, 
-                                password
+                                password,
+                                name
                             })
                         }}type="button" className="mt-8 w-full text-white bg-gray-800 focus:ring-4 
                         focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2">Sign Up</button>
