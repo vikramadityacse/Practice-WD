@@ -1,4 +1,4 @@
-import { Signup } from "@/components/Signup"
+import { Signup } from "@/app/components/Signup"
 
 export default function(){
   return <Signup />

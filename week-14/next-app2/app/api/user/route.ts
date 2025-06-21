@@ -1,5 +1,6 @@
 import { NextRequest } from "next/server";
-import { PrismaClient } from "@prisma/client/extension";
+import { PrismaClient } from '@/generated/prisma'; // ✅ correct for Prisma 6+
+
 
 const client = new PrismaClient();
 
