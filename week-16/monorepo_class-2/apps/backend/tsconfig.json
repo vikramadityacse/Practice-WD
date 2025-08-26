@@ -1,10 +1,14 @@
 {
-    "extends" : "@repo/typescript-config/base.json",
-    "compilerOptions" : {
-        "lib" : ["ES2015"],
-        "module" : "commonjs",
-        "outDir": "./dist",
-    },
-    "exclude" : ["node_modules"],
-    "include" : ["."]
+  "extends": "../../packages/typescript-config/tsconfig.base.json",
+  "compilerOptions": {
+    "lib": ["ES2022"],
+    "module": "NodeNext",
+    "outDir": "dist",
+    "rootDir": "src",
+    "paths": {
+      "@repo/*": ["../../packages/*/src"]
+    }
+  },
+  "exclude": ["node_modules"],
+  "include": ["."]
 }
