@@ -1,8 +1,11 @@
-import { useSession } from "next-auth/react"
+import { Appbar } from "@/components/Appbar";
+import { getServerSession } from "next-auth"
 
 export default function(){
-    const session = useSession();
+    const session = getServerSession();
     return <div>
-        User Componenet
+        <Appbar />
+        User Component2
+        {JSON.stringify(session)}
     </div>
 }

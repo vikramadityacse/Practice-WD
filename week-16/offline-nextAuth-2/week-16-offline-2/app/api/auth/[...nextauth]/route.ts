@@ -11,17 +11,25 @@ const handler = NextAuth({
                 password: {label:"Password", type:"password", placeholder:"Password"}
             },
             async authorize(credentials: any){
-                const username = credentials.username;
-                const password = credentials.password;
-                const user = await prisma.user.findOne({
-                    where : {
-                        email: username,
-                        password: password
-                    }
-                })
-                return {
-                    id: user.id,
-                    name: user.name
+                
+                //----------------validate: old style----------------
+                // const username = credentials.username;
+                // const password = credentials.password;
+                // const user = await prisma.user.findOne({
+                //     where : {
+                //         email: username,
+                //         password: password
+                //     }
+                // })
+                // return {
+                //     id: user.id,
+                //     name: user.name
+                // }
+
+                return{
+                    id: "fefe",
+                    name: "Vikramaditya",
+                    email: "monu7451@gmail.com"
                 }
             }
         })
