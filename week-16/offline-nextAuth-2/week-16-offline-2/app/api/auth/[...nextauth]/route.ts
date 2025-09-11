@@ -25,7 +25,8 @@ const handler = NextAuth({
                 }
             }
         })
-    ]
+    ],
+    secret: process.env.NEXTAUTH_SECRET
 })
 
 export const GET = handler;
