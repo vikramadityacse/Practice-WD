@@ -1,41 +1,9 @@
 import NextAuth from 'next-auth'
 import { NextRequest } from 'next/server';
 import CredentialsProvider from 'next-auth/providers/credentials';
+import { NEXT_AUTH } from '@/app/lib/auth';
 
-const handler = NextAuth({
-    providers : [
-        CredentialsProvider({
-            name: "Email",
-            credentials: {
-                username: {label:"Username", type:"text", placeholder: "Email"},
-                password: {label:"Password", type:"password", placeholder:"Password"}
-            },
-            async authorize(credentials: any){
-                
-                //----------------validate: old style----------------
-                // const username = credentials.username;
-                // const password = credentials.password;
-                // const user = await prisma.user.findOne({
-                //     where : {
-                //         email: username,
-                //         password: password
-                //     }
-                // })
-                // return {
-                //     id: user.id,
-                //     name: user.name
-                // }
-
-                return{
-                    id: "fefe",
-                    name: "Vikramaditya",
-                    email: "monu7451@gmail.com"
-                }
-            }
-        })
-    ],
-    secret: process.env.NEXTAUTH_SECRET
-})
+const handler = NextAuth(NEXT_AUTH)
 
 export const GET = handler;
-export const POST = handler;  
+export const POST = handler; 

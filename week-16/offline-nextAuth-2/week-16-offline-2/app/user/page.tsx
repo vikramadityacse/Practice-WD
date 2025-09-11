@@ -1,11 +1,18 @@
 import { Appbar } from "@/components/Appbar";
-import { getServerSession } from "next-auth"
+import NextAuth, { getServerSession } from "next-auth"
+import { NEXT_AUTH } from "../lib/auth";
 
-export default function(){
-    const session = getServerSession();
-    return <div>
-        <Appbar />
-        User Component2
-        {JSON.stringify(session)}
-    </div>
+async function getUser(){
+    const session  = await getServerSession(NEXT_AUTH);
+    return session;
+}
+
+export default async function Home(){
+    const session = await getUser();
+
+    return (
+        <div>
+            {JSON.stringify(session)}
+        </div>
+    )
 }
